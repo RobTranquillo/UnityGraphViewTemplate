@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
@@ -32,6 +34,12 @@ public class BehaviourTreeView : GraphView
         
         
         tree.nodes.ForEach(CreateNodeView);
+    }
+
+
+    public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+    {
+        return ports.ToList().Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node).ToList();
     }
 
     private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
