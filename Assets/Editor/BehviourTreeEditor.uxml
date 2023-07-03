@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/BehviourTreeEditor.uss?fileID=7433441132597879392&amp;guid=b53c7383f3b163247b9f7d291f81a8d1&amp;type=3#BehviourTreeEditor" />
+    <uie:Toolbar>
+        <uie:ToolbarMenu tabindex="-1" display-tooltip-when-elided="true" text="Assets" />
+    </uie:Toolbar>
+    <SplitView fixed-pane-initial-dimension="118">
+        <ui:VisualElement name="left-panel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+            <ui:Label tabindex="-1" text="Inspector" display-tooltip-when-elided="true" />
+            <InspectorView />
+        </ui:VisualElement>
+        <ui:VisualElement name="right-panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <BehaviourTreeView focusable="true" style="flex-grow: 1;">
+                <ui:Label tabindex="-1" text="TreeView" display-tooltip-when-elided="true" />
+            </BehaviourTreeView>
+        </ui:VisualElement>
+    </SplitView>
+</ui:UXML>

@@ -35,15 +35,11 @@ public class BehaviourTreeRunner : MonoBehaviour
         loop.child = sequence;
         // behaviour tree ende
 
-
-
         tree.rootNode = loop;
-
-
     }
 
     private void Update()
     {   
-        tree.Update();
+        //tree.Update();
     }
 }
