@@ -4,8 +4,8 @@ using UnityEngine.UIElements;
 
 public class BehviourTreeEditor : EditorWindow
 {
-    //[SerializeField]
-    //private VisualTreeAsset m_VisualTreeAsset = default;
+    BehaviourTreeView treeView;
+    InspectorView inspectorView;
 
     [MenuItem("vrbits/Scene Flow Editor")]
     public static void OpenWindow()
@@ -26,5 +26,20 @@ public class BehviourTreeEditor : EditorWindow
 
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehviourTreeEditor.uss");
         root.styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehviourTreeEditor.uss"));
+
+        treeView = root.Q<BehaviourTreeView>();
+        inspectorView = root.Q<InspectorView>();
+
+        OnSelectionChange();
+    }
+
+    private void OnSelectionChange()
+    {
+        BehaviourTree tree = Selection.activeObject as BehaviourTree;
+        if (tree)
+        {
+            treeView.PopulateView(tree);
+        }
+        
     }
 }
