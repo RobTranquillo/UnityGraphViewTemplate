@@ -24,6 +24,11 @@ public class BehaviourTreeView : GraphView
         styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehviourTreeEditor.uss"));
     }
 
+    NodeView FindNodeView(Node node)
+    {
+        return GetNodeByGuid(node.guid) as NodeView;
+    }
+
     internal void PopulateView(BehaviourTree tree)
     {
         this.tree = tree;
@@ -31,11 +36,31 @@ public class BehaviourTreeView : GraphView
         graphViewChanged -= OnGraphViewChanged;
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
+
+        DisplayAllNodes();
+        DisplayAllEdges();
         
-        
-        tree.nodes.ForEach(CreateNodeView);
     }
 
+    private void DisplayAllEdges()
+    {
+        tree.nodes.ForEach(node =>
+        {
+            List<Node> children = tree.GetChildren(node);
+            children.ForEach(child =>
+            {
+                NodeView parentView = FindNodeView(node);
+                NodeView childView = FindNodeView(child);
+                Edge edge = parentView.output.ConnectTo(childView.input);
+                AddElement(edge);
+            });
+        });
+    }
+
+    private void DisplayAllNodes()
+    {
+        tree.nodes.ForEach(CreateNodeView);
+    }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
     {
@@ -51,8 +76,27 @@ public class BehaviourTreeView : GraphView
                 NodeView nodeView = element as NodeView;
                 if (nodeView != null)
                     tree.DeleteNode(nodeView.node);
+
+                Edge edge = element as Edge;
+                if (edge != null)
+                {
+                    NodeView parentView = edge.output.node as NodeView;
+                    NodeView childView = edge.input.node as NodeView;
+                    tree.RemoveChild(parentView.node, childView.node);
+                }
             });
         }
+
+        if (graphViewChange.edgesToCreate != null)
+        {
+            graphViewChange.edgesToCreate.ForEach((edge) =>
+            {
+                NodeView parentView = edge.output.node as NodeView;
+                NodeView childView = edge.input.node as NodeView;
+                tree.AddChild(parentView.node, childView.node);                
+            });
+        }
+
         return graphViewChange;
     }
 
