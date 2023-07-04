@@ -1,0 +1,10 @@
+{
+  "name": "robtranquillo.graphviewtemplate",
+  "displayName": "Unity GraphView Template",
+  "version": "1.0.0",
+  "description": "A working template for Unitys GraphView used as Editor for ScriptableObjects ",
+  "type": "tool",
+  "dependencies": {
+  },
+  "samples": []
+}
