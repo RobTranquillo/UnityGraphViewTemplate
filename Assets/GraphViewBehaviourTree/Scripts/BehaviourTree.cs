@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "vrbits/New SceneFlow Configuration", fileName = "SceneFlowConfiguration.asset")]
+[CreateAssetMenu(menuName = "tools/New BehaviourTree", fileName = "BehaviourTreeData.asset")]
 public class BehaviourTree : ScriptableObject
 {
     public Node rootNode;

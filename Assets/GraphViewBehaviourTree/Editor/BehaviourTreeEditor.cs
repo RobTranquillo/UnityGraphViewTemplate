@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BehviourTreeEditor : EditorWindow
+public class BehaviourTreeEditor : EditorWindow
 {
     BehaviourTreeView treeView;
     InspectorView inspectorView;
@@ -10,7 +10,7 @@ public class BehviourTreeEditor : EditorWindow
     [MenuItem("vrbits/Scene Flow Editor")]
     public static void OpenWindow()
     {
-        BehviourTreeEditor wnd = GetWindow<BehviourTreeEditor>();
+        BehaviourTreeEditor wnd = GetWindow<BehaviourTreeEditor>();
         wnd.titleContent = new GUIContent("SceneFlow Editor");
     }
 
@@ -20,12 +20,12 @@ public class BehviourTreeEditor : EditorWindow
         VisualElement root = rootVisualElement;
 
         // import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/BehviourTreeEditor.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uxml");
         // Instantiate UXML
         visualTree.CloneTree(root);
 
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehviourTreeEditor.uss");
-        root.styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehviourTreeEditor.uss"));
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uss");
+        root.styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uss"));
 
         treeView = root.Q<BehaviourTreeView>();
         inspectorView = root.Q<InspectorView>();
