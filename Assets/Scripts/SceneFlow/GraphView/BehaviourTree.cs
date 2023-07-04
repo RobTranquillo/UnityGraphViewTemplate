@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "vrbits/New SceneFlow Configuration", fileName = "SceneFlowConfiguration.asset")]
 public class BehaviourTree : ScriptableObject
 {
     public Node rootNode;
@@ -44,6 +44,10 @@ public class BehaviourTree : ScriptableObject
         if (decorator)
             decorator.child = child;
 
+        RootNode rootNode = parent as RootNode;
+        if (rootNode)
+            rootNode.child = child;
+
         CompositeNode composite = parent as CompositeNode;
         if (composite)
             composite.children.Add(child);
@@ -54,6 +58,10 @@ public class BehaviourTree : ScriptableObject
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
             decorator.child = null;
+
+        RootNode rootNode = parent as RootNode;
+        if (rootNode)
+            rootNode.child = null;
 
         CompositeNode composite = parent as CompositeNode;
         if (composite)
@@ -68,10 +76,21 @@ public class BehaviourTree : ScriptableObject
         if (decorator && decorator.child != null)
             children.Add(decorator.child);
 
+        RootNode rootNode = parent as RootNode;
+        if (rootNode && rootNode.child != null)
+            children.Add(rootNode.child);
+
         CompositeNode composite = parent as CompositeNode;
         if (composite)
             children = composite.children;
 
         return children;
+    }
+
+    public BehaviourTree Clone()
+    {
+        BehaviourTree tree = Instantiate(this);
+        tree.rootNode = tree.rootNode.Clone();
+        return tree;
     }
 }

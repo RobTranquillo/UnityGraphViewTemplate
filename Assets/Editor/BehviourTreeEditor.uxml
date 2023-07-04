@@ -3,8 +3,8 @@
     <uie:Toolbar>
         <uie:ToolbarMenu tabindex="-1" display-tooltip-when-elided="true" text="Assets" />
     </uie:Toolbar>
-    <SplitView fixed-pane-initial-dimension="118">
-        <ui:VisualElement name="left-panel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+    <SplitView fixed-pane-initial-dimension="260">
+        <ui:VisualElement name="left-panel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 300px;">
             <ui:Label tabindex="-1" text="Inspector" display-tooltip-when-elided="true" />
             <InspectorView />
         </ui:VisualElement>

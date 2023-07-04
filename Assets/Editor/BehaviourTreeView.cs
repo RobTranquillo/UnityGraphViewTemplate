@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class BehaviourTreeView : GraphView
 {
-    //factory
+    public Action<NodeView> OnNodeSelected;
     public new class UxmlFactory : UxmlFactory<BehaviourTreeView, GraphView.UxmlTraits> { }
     BehaviourTree tree;
     
@@ -37,9 +37,19 @@ public class BehaviourTreeView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
+        DisplayRootNode();
         DisplayAllNodes();
         DisplayAllEdges();
         
+    }
+
+    private void DisplayRootNode()
+    {
+        if (tree.rootNode != null)
+            return;
+        tree.rootNode = tree.CreateNode(typeof(RootNode)) as RootNode;
+        EditorUtility.SetDirty(tree);
+        AssetDatabase.SaveAssets();
     }
 
     private void DisplayAllEdges()
@@ -138,6 +148,7 @@ public class BehaviourTreeView : GraphView
     void CreateNodeView(Node node)
     {
         NodeView nodeView = new NodeView(node);
+        nodeView.OnNodeSelected = OnNodeSelected;
         AddElement(nodeView);
     }
 }
