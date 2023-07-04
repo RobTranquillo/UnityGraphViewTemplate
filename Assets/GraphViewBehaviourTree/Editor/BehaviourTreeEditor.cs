@@ -20,12 +20,13 @@ public class BehaviourTreeEditor : EditorWindow
         VisualElement root = rootVisualElement;
 
         // import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uxml");
+        VisualTreeAsset visualTree = PackageSaveAssetLoading.GetUXMLAsset();
         // Instantiate UXML
         visualTree.CloneTree(root);
 
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uss");
-        root.styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uss"));
+        // import USS
+        var styleSheet = PackageSaveAssetLoading.GetUSSAsset();
+        root.styleSheets.Add(styleSheet);
 
         treeView = root.Q<BehaviourTreeView>();
         inspectorView = root.Q<InspectorView>();

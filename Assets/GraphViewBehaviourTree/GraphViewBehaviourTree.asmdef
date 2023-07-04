@@ -1,3 +1,14 @@
 {
-	"name": "GraphViewBehaviourTree"
+    "name": "GraphViewBehaviourTree",
+    "rootNamespace": "GraphViewBehaviourTree",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

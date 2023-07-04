@@ -20,8 +20,8 @@ public class BehaviourTreeView : GraphView
         this.AddManipulator(new SelectionDragger());
         this.AddManipulator(new RectangleSelector());
 
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uss");
-        styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/GraphViewBehaviourTree/Editor/BehaviourTreeEditor.uss"));
+        StyleSheet styleSheet = PackageSaveAssetLoading.GetUSSAsset();
+        styleSheets.Add(styleSheet);
     }
 
     NodeView FindNodeView(Node node)
