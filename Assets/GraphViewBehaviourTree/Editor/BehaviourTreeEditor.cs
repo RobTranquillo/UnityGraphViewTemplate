@@ -7,7 +7,7 @@ public class BehaviourTreeEditor : EditorWindow
     BehaviourTreeView treeView;
     InspectorView inspectorView;
 
-    [MenuItem("vrbits/Scene Flow Editor")]
+    [MenuItem("tools/BehaviourTree Editor")]
     public static void OpenWindow()
     {
         BehaviourTreeEditor wnd = GetWindow<BehaviourTreeEditor>();
