@@ -15,6 +15,7 @@ public static class PackageSaveAssetLoading
         //package save way of loading the UXML file
         string uxml_guid = "f203b4b62974b364abdb10172c54c2a3";
         string uxml_path = AssetDatabase.GUIDToAssetPath(uxml_guid);
+        var foo = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(uxml_path);
         return AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(uxml_path);
     }
 
