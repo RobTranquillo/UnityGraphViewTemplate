@@ -1,4 +1,4 @@
-Created by Rob [VR Bits] (http://www.vr-bits.com) and is 100% based on the work of a person from the internet. But I don't want to mention the name because the person wants to get people as patreons to give him money for his work. And I don't want to undermine that. Everything I publish here, the person has already published himself via Youtube and I hope that's OK.
+Created by Rob [VR Bits](http://www.vr-bits.de) and is 100% based on the work of a person from the internet. But I don't want to mention the name because the person wants to get people as patreons to give him money for his work. And I don't want to undermine that. Everything I publish here, the person has already published himself via Youtube and I hope that's OK.
 If you want to know who it is, just ask me.
 
 
