@@ -8,7 +8,7 @@ public class BehaviourTree : ScriptableObject
 {
     public Node rootNode;
     public Node.State treeState = Node.State.Running;
-    public List<Node> nodes = new List<Node>();
+    [HideInInspector] public List<Node> nodes = new List<Node>();
 
     public Node.State Update()
     {
