@@ -5,21 +5,24 @@ using UnityEngine;
 
 public class DebugLogNode : ActionNode
 {
+    public bool debug = false;
     public string message;
 
     protected override void OnStart()
     {
-        Debug.Log($"<color=green>OnStart</color> " + message);
+        Debug.Log($"<color=green>{message}</color>");
     }
 
     protected override void OnStop()
     {
-        Debug.Log($"<color=lightgreen>OnStop</color> " + message);
+        if (debug)
+            Debug.Log($"<color=lightgreen>OnStop</color> {message}");
     }
 
     protected override State OnUpdate()
     {
-        Debug.Log($"<color=yellow>OnUpdate</color> " + message);
+        if (debug)
+            Debug.Log($"<color=yellow>OnUpdate</color> {message}");
 
         return State.Success;
     }
